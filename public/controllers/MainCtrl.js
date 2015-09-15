@@ -1,6 +1,10 @@
-NewsApp.controller('MainCtrl', ['$scope', '$modal','posts', function ($scope, $modal, posts){
+NewsApp.controller('MainCtrl', ['$scope', '$routeParams','$modal','posts', function ($scope, $routeParams, $modal, posts){
 
   console.log('Main Controller....here!!')
+
+  // posts.get($routeParams.id).success(function(post){
+  //   $scope.post = post;
+  // });
 
   $scope.posts = posts.posts;
 

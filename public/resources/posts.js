@@ -29,24 +29,26 @@ NewsApp.factory('posts', ['$http',function($http){
   o.upvote = function(post) {
     return $http.put('/api/posts/' + post._id + '/upvote')
     .success(function(data){
-      post.upvotes += 1;
+      post.upvotes = data.upvotes;
     });
   };
 
-  o.upvote = function(comment) {
-    return $http.put('/api/posts/' + post._id + '/comments' + comment._id + '/upvote')
+  o.upvoteComment = function(post, comment) {
+    return $http.put('/api/posts/' + post._id + '/comments/' + comment._id + '/upvote')
     .success(function(data){
-      comment.upvotes += 1;
+      comment.upvotes = data.upvotes;
     })
-  }
+  };
+
+  o.get = function(id) {
+    return $http.get('/api/posts/' + id);
+  };
 
   o.addComment = function(id,comment) {
     return $http.post('/api/posts/' + id + '/comments', comment);
   };
 
-  o.get = function(id) {
-    return $http.get('/api/posts/' + id)
-  };
+
   return o;
 
 }])

@@ -11,7 +11,7 @@ NewsApp.controller('PostsCtrl', ['$scope','posts','$routeParams', function ($sco
     if(!$scope.body && $scope.body === '') {
       return;
     }
-    posts.addComment(post._id, {
+    posts.addComment($scope.post._id, {
       body: $scope.body,
       author: 'user'
     }).success(function(comment){
@@ -25,6 +25,6 @@ NewsApp.controller('PostsCtrl', ['$scope','posts','$routeParams', function ($sco
   }
 
   $scope.incrementUpvotes = function(comment) {
-    posts.upvoteComment(post,comment);
+    posts.upvoteComment($scope.post,comment);
   }
 }]);

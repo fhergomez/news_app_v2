@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="NewsApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title><%= title %></title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-messages.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.11/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="/js/angularApp.js"></script>
+    <script src="/controllers/MainCtrl.js"></script>
+    <script src="/controllers/PostsCtrl.js"></script>
+    <script src="/resources/posts.js"></script>
+
+    <base href="/">
+</head>
+
+<body>
+  <div id="bg" class="container-fluid">
+  </div>
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">?? NEWS</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/posts/">Post</a></li>
+        <li><a href="/news">News</a></li>
+      </ul>
+
+
+
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+
+
+
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  <div class="container">
+      <div class="row">
+      <p>Welcome to <%= title %></p>
+        <ng-view></ng-view>
+      </div>
+  </div>
+</body>
+</html>
+

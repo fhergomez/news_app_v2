@@ -34,10 +34,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-// app.use('/api/', routes);
+app.use('/api', routes);
 app.use('/api/posts', posts);
 app.use('/api/users', users);
 
+///GET / ... any other url
 //homepage route - catches ALL requests and lets angular do the routing
 app.use(function(req, res, next) {
   res.render('index', { title: 'Seattle News' });

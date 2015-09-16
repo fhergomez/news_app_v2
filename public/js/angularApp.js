@@ -20,13 +20,18 @@ NewsApp.config(['$routeProvider','$locationProvider', function ($routeProvider, 
   })
 
   .when('/posts', {
-    templateUrl: '/views/posts/show.html',
-    controller: 'PostsCtrl'
+    templateUrl: '/views/posts/index.html',
+    controller: 'PostsCtrl',
+    resolve: {
+      postPromise: ['posts', function(posts){
+        return posts.getAll();
+      }]
+    }
   })
 
   .when('/posts/:id', {
-    templateUrl: '/views/posts/index.html',
-    controller: 'PostsCtrl'
+    templateUrl: '/views/posts/show.html',
+    controller: 'PostsShowCtrl'
   })
 
   .when('/news', {
@@ -40,7 +45,7 @@ NewsApp.config(['$routeProvider','$locationProvider', function ($routeProvider, 
   })
 
   .when('/signup', {
-    templateUrl: '/vies/auth/signup.html',
+    templateUrl: '/views/auth/signup.html',
     controller: 'AuthCtrl'
   })
 

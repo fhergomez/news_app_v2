@@ -8,9 +8,9 @@ var User = mongoose.model('User');
 var passport = require('passport');
 var auth = jwt({secret: 'SECRET', userProperty: 'payload'});
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Seattle News' });
+  // res.render('index', { title: 'Seattle News' });
+  res.send('api page');
 });
 
 router.post('/register', function(req,res,next){

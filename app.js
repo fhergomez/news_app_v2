@@ -5,13 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var passport = require('passport');
     mongoose.connect('mongodb://localhost/news');
     require('./models/Posts');
     require('./models/Comments');
+    require('./models/Users');
+    require('./auth/passport');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
+
 
 var app = express();
 
@@ -28,8 +32,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
-// app.use('/', routes);
+// app.use('/api/', routes);
 app.use('/api/posts', posts);
 app.use('/api/users', users);
 
@@ -53,7 +58,7 @@ app.use(function(req, res, next) {
 // // will print stacktrace
 // if (NODE_ENV === 'development') {
 //   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
+//     res.statusus(err.status || 500);
 //     res.render('error', {
 //       message: err.message,
 //       error: err

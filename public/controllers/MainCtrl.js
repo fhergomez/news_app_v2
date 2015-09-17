@@ -1,6 +1,8 @@
-NewsApp.controller('MainCtrl', ['$scope', '$routeParams','$http','$modal','posts', function ($scope, $routeParams, $http, $modal, posts){
+NewsApp.controller('MainCtrl', ['$scope', '$routeParams','$http','$modal','posts', 'auth', function ($scope, $routeParams, $http, $modal, posts, auth){
 
   console.log('Main Controller....here!!')
+
+  $scope.isLoggedIn = auth.isLoggedIn;
 
   $scope.data = {};
    $http.get('/api/news').success(function(data){

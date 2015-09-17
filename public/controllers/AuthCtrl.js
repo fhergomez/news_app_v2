@@ -6,6 +6,7 @@ NewsApp.controller('AuthCtrl', ['$scope','$routeParams','$location','auth', func
   $scope.register = function(){
     auth.register($scope.user).error(function(error){
       $scope.error = error;
+      console.log('error',error);
     }).then(function(){
       $location.path('/');
     });

@@ -18,19 +18,24 @@ router.post('/register', function(req,res,next){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
   var user = new User();
-  user.name = req.body.name;
+  // user.name = req.body.name;
   user.username = req.body.username;
   user.setPassword(req.body.password)
-  if (user.username) {
-    return res.status(400).json({message: 'Username already exists'});
-  }
+  // if (user.username) {
+  //   return res.status(400).json({message: 'Username already exists'});
+  // }
   user.save(function(err){
     if(err){
-      return next(err);
+      // return next(err);
+      res.status(400).json({
+        message: 'Unable to create user.',
+        error: err
+      });
+    } else {
+      return res.json({
+        token: user.generateJWT()
+      });
     }
-    return res.json({
-      token: user.generateJWT()
-    });
   })
 });
 

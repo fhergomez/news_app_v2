@@ -14,7 +14,7 @@
       </span>
       {{post.upvotes}}
       <span style="font-size:20px; margin-left:10px;">
-        <a ng-show="post.link" href="{{post.link}}">
+        <a ng-show="post.link" href="{{post.link}}" target="_blank">
           {{post.title}}
         </a>
         <span ng-hide="post.link">
@@ -24,6 +24,7 @@
         <p>
           <a href="/posts/{{post._id}}">Comments</a>
         </p>
+    </div>
       <div ng-hide="isLoggedIn()">
         <a href="/login" class="btn btn-primary">LOGIN TO POST</a>
       </div>
@@ -42,13 +43,12 @@
           <div class="form-group">
             <input type="text"
             class="form-control"
-            placeholder="http://"
+            placeholder="http:// (optional)"
             ng-model="link"></input>
           </div>
           <button type="submit" class="btn btn-primary">Submit Post</button>
         </form>
       </div>
-    </div>
   </div>
 </div>
 

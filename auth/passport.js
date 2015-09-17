@@ -18,6 +18,8 @@ passport.use(new LocalStrategy(function(username, password, done){
         message: 'Incorrect password'
       });
     }
-    return done(null, user);
+    return done(null, user, {
+      message: 'You are now logged In'
+    });
   });
 }));

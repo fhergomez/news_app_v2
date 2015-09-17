@@ -15,6 +15,7 @@ var passport = require('passport');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
+var news = require('./routes/news');
 
 
 var app = express();
@@ -37,6 +38,7 @@ app.use(passport.initialize());
 app.use('/api', routes);
 app.use('/api/posts', posts);
 app.use('/api/users', users);
+app.use('/api/news', news);
 
 ///GET / ... any other url
 //homepage route - catches ALL requests and lets angular do the routing

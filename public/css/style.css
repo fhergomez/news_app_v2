@@ -36,3 +36,7 @@ a {
 .mainPost, .mainNews {
   padding: 0 19px 0 19px;
 }
+
+.weather {
+  margin-right: 50px;
+}

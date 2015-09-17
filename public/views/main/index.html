@@ -1,4 +1,7 @@
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+  <div ng-if="success" class="alert alert-success row">
+    <span>{{ message }}</span>
+  </div>
 
   <div class="page-header">
     <h1>Most popular posts</h1>
@@ -21,9 +24,9 @@
       <a href="/posts/{{post._id}}">Comments</a>
     </p>
   </div>
+  <button class="btn btn-primary glyphicon glyphicon-plus" ng-click='showForm = !showForm'> {{showForm ? "CANCEL" : "POST"}}</button>
 
-  <form ng-submit="addPost()"
-    style="margin-top:30px;">
+  <form ng-submit="addPost()" style="margin-top:30px;" ng-show="showForm">
     <h3>Add a new post</h3>
 
     <div class="form-group">
@@ -35,10 +38,10 @@
     <div class="form-group">
       <input type="text"
       class="form-control"
-      placeholder="Link"
+      placeholder="http://"
       ng-model="link"></input>
     </div>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <button type="submit" class="btn btn-primary">Submit Post</button>
   </form>
 </div>
 
@@ -47,5 +50,8 @@
   <div class="page-header">
     <h1>NEWS</h1>
   </div>
+  <ul ng-repeat="result in results | limitTo:8:0">
+      <li><a href="{{result.url}}" target="_blank">{{result.title}}</a></li>
+    </ul>
 
 </div>

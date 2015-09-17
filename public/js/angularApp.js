@@ -49,6 +49,11 @@ NewsApp.config(['$routeProvider','$locationProvider', function ($routeProvider, 
     controller: 'AuthCtrl'
   })
 
+  .when('/news', {
+    templateUrl: 'views/news/index.html',
+    controller: 'NewsCtrl'
+  })
+
   .otherwise({
     templateUrl:'/views/errors/404.html'
   })

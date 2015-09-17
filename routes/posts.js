@@ -23,6 +23,7 @@ router.get('/', function(req,res,next){
 })
 
 router.post('/', auth, function(req,res,next){
+  console.log(auth);
   var post = new Post(req.body);
   post.author = req.payload.username;
   post.save(function(err,post){
@@ -79,6 +80,15 @@ router.put('/:post/upvote', auth, function(req,res,next){
     res.json(post);
   });
 });
+
+router.put('/:post', auth, function(req,res,next){
+  req.post(function(err,post){
+    if(err){
+      return next(err);
+    }
+    res.json(post);
+  })
+})
 
 router.put('/:post/comments/:comment/upvote', auth, function(req,res,next){
   req.comment.upvote(function(err,comment){

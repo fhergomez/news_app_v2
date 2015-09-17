@@ -1,4 +1,4 @@
-NewsApp.factory('posts', ['$http',function($http){
+NewsApp.factory('posts', ['$http', 'auth', function($http, auth){
   // return {
 
   //   find: function(){
@@ -21,21 +21,41 @@ NewsApp.factory('posts', ['$http',function($http){
   };
 
   o.create = function(post){
-    return $http.post('/api/posts', post).success(function(data){
+    return $http.post('/api/posts', post, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToken()
+      }
+    }).success(function(data){
       o.posts.push(data);
     });
   };
 
   o.upvote = function(post) {
-    return $http.put('/api/posts/' + post._id + '/upvote')
-    .success(function(data){
+    return $http.put('/api/posts/' + post._id + '/upvote', null, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToken()
+      }
+    }).success(function(data){
       post.upvotes = data.upvotes;
     });
   };
 
+  o.editPost = function(post) {
+    return $http.put('api/posts/' + post._id, null, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToke()
+      }
+    }).success(function(data){
+      post = data.post;
+    });
+  };
+
   o.upvoteComment = function(post, comment) {
-    return $http.put('/api/posts/' + post._id + '/comments/' + comment._id + '/upvote')
-    .success(function(data){
+    return $http.put('/api/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToken()
+      }
+    }).success(function(data){
       comment.upvotes = data.upvotes;
     })
   };
@@ -45,7 +65,11 @@ NewsApp.factory('posts', ['$http',function($http){
   };
 
   o.addComment = function(id,comment) {
-    return $http.post('/api/posts/' + id + '/comments', comment);
+    return $http.post('/api/posts/' + id + '/comments', comment, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToken()
+      }
+    });
   };
 
 

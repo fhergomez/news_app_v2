@@ -1,13 +1,30 @@
-var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=Seattle,%20US&units=imperial"
-var request = new XMLHttpRequest();
- request.open("get", weatherUrl, false);
- request.send();
- // if (request.responseText IS NOT AN ERROR )
- var data = JSON.parse(request.responseText);
- var temp = data.main.temp;
- var conditions = data.weather[0].description;
- //console.log(conditions);
-
- // put the data into .weather-widget element
- var weather_display = "<span>" + temp + "</span><span>" + conditions + "</span>";
-document.getElementById("weather-widget").innerHTML = weather_display;
+NewsApp.directive('weather', function() {
+ return {
+  restrict: 'E',
+  scope: {
+   location: '=?'
+  },
+  controller: ['$scope', '$http', function($scope,$http){
+   $scope.location = 'Seattle, WA';
+    console.log($scope.location);
+     $http({
+       url:'http://api.openweathermap.org/data/2.5/weather',
+       params:{
+         q:$scope.location,
+         units:'imperial'
+        }
+     }).success(function(data){
+        console.log(data)
+        var weatherData = data.weather[0];
+        $scope.temperature = Math.round(data.main.temp);
+        $scope.city = data.name;
+        $scope.image = 'http://openweathermap.org/img/w/' + weatherData.icon + '.png';
+     })
+   }],
+    template:'<li class="weather"> \
+                Today\'s temperature is: {{temperature}}&deg;<img src="{{image}}">\
+                </li>',
+    replace: true,
+    transclude: true
+ }
+});

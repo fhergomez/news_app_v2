@@ -43,7 +43,7 @@ app.use('/api/news', news);
 ///GET / ... any other url
 //homepage route - catches ALL requests and lets angular do the routing
 app.use(function(req, res, next) {
-  res.render('index', { title: 'Seattle News' });
+  res.render('index', { title: 'News Trackr' });
 });
 
 // catch 404 and forward to error handler

@@ -1,57 +1,61 @@
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mainPost">
+
   <div ng-if="success" class="alert alert-success row">
     <span>{{ message }}</span>
   </div>
 
-  <div class="page-header">
-    <h1>Most popular posts</h1>
-  </div>
-
-  <div ng-repeat="post in posts | orderBy:'-upvotes' | limitTo:5:0">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(post)">
-    </span>
-    {{post.upvotes}}
-    <span style="font-size:20px; margin-left:10px;">
-      <a ng-show="post.link" href="{{post.link}}">
-        {{post.title}}
-      </a>
-      <span ng-hide="post.link">
-        {{post.title}}
+  <div class="panel panel-primary panelBody">
+    <div class="panel-heading panelHeader">
+      <h1>POPULAR POSTS</h1>
+    </div>
+    <div class="panel-body" ng-repeat="post in posts | orderBy:'-upvotes' | limitTo:5:0">
+      <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="incrementUpvotes(post)">
       </span>
-    </span>
-    <p>
-      <a href="/posts/{{post._id}}">Comments</a>
-    </p>
-  </div>
-  <button class="btn btn-primary glyphicon glyphicon-plus" ng-click='showForm = !showForm'> {{showForm ? "CANCEL" : "POST"}}</button>
+      {{post.upvotes}}
+      <span style="font-size:20px; margin-left:10px;">
+        <a ng-show="post.link" href="{{post.link}}">
+          {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+          {{post.title}}
+        </span>
+      </span>
+        <p>
+          <a href="/posts/{{post._id}}">Comments</a>
+        </p>
+    </div>
+    <button class="btn btn-primary glyphicon glyphicon-plus" ng-click='showForm = !showForm'> {{showForm ? "CANCEL" : "POST"}}</button>
 
-  <form ng-submit="addPost()" style="margin-top:30px;" ng-show="showForm">
-    <h3>Add a new post</h3>
+    <form ng-submit="addPost()" style="margin-top:30px;" ng-show="showForm">
+      <h3>Add a new post</h3>
 
-    <div class="form-group">
-      <input type="text"
+      <div class="form-group">
+        <input type="text"
+          class="form-control"
+          placeholder="Title"
+          ng-model="title"></input>
+      </div>
+      <div class="form-group">
+        <input type="text"
         class="form-control"
-        placeholder="Title"
-        ng-model="title"></input>
-    </div>
-    <div class="form-group">
-      <input type="text"
-      class="form-control"
-      placeholder="http://"
-      ng-model="link"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit Post</button>
-  </form>
+        placeholder="http://"
+        ng-model="link"></input>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Post</button>
+    </form>
+  </div>
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
-  <div class="page-header">
-    <h1>NEWS</h1>
+  <div class="panel panel-primary panelBody">
+    <div class="panel-heading panelHeader">
+      <h1>NEWS</h1>
+    </div>
+    <div class="panel-body">
+      <ul ng-repeat="result in results | limitTo:15:0">
+        <li><a href="{{result.url}}" target="_blank">{{result.title}}</a></li>
+      </ul>
+    </div>
   </div>
-  <ul ng-repeat="result in results | limitTo:8:0">
-      <li><a href="{{result.url}}" target="_blank">{{result.title}}</a></li>
-    </ul>
-
-</div>

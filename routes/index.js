@@ -18,11 +18,12 @@ router.post('/register', function(req,res,next){
     return res.status(400).json({message: 'Please fill out all fields'});
   }
   var user = new User();
-
+  user.name = req.body.name;
   user.username = req.body.username;
-
   user.setPassword(req.body.password)
-
+  if (user.username) {
+    return res.status(400).json({message: 'Username already exists'});
+  }
   user.save(function(err){
     if(err){
       return next(err);

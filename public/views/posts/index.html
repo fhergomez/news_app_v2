@@ -1,20 +1,25 @@
-<h1>List of Posts</h1>
-
-
-  <div ng-repeat="post in posts | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(post)">
-    </span>
-    {{post.upvotes}}
-    <span style="font-size:20px; margin-left:10px;">
-      <a ng-show="post.link" href="{{post.link}}">
-        {{post.title}}
-      </a>
-      <span ng-hide="post.link">
-        {{post.title}}
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-lg-offset-3 ">
+  <div class="panel panel-primary panelBody">
+    <div class="panel-heading panelHeader">
+      <h1>ALL POSTS</h1>
+    </div>
+    <div class="panel-body" ng-repeat="post in posts | orderBy:'-upvotes'">
+      <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="incrementUpvotes(post)">
       </span>
-    </span>
-    <p>
-      <a href="/posts/{{post._id}}">Comments</a>
-    </p>
+      {{post.upvotes}}
+      <span style="font-size:15px; margin-left:10px;">
+        <a ng-show="post.link" href="{{post.link}}">
+          {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+          {{post.title}}
+        </span>
+      </span>
+      <p>
+        <a href="/posts/{{post._id}}">Comments</a>
+      </p>
+    </div>
   </div>
+</div>
+

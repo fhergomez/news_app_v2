@@ -20,6 +20,12 @@ NewsApp.controller('PostsShowCtrl', ['$scope','posts','$routeParams', function (
     $scope.body = '';
   }
 
+  $scope.deleteComment = function(){
+    posts.deleteComment, {
+      body: $scope.body
+    }
+  }
+
   $scope.incrementUpvotes = function(post) {
     posts.upvote(post);
   }

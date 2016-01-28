@@ -8,7 +8,7 @@ NewsApp.directive('weather', function() {
    $scope.location = 'Seattle, WA';
     console.log($scope.location);
      $http({
-       url:'http://api.openweathermap.org/data/2.5/weather',
+       url:'/api/weather',
        params:{
          q:$scope.location,
          units:'imperial'

@@ -99,6 +99,15 @@ router.put('/:post/comments/:comment/upvote', auth, function(req,res,next){
   });
 });
 
+router.delete('/:post/comments/:comment', auth, function(req,res,next){
+  req.comment.upvote(function(err,comment){
+    if(err){
+      return next(err);
+    }
+    res.json(comment);
+  });
+});
+
 router.post('/:post/comments', auth, function(req,res,next){
   var comment = new Comment(req.body);
   comment.post = req.post;

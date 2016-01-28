@@ -34,6 +34,8 @@
       {{comment.upvotes}} - by {{comment.author}}
       <span style="font-size:15px; margin:10px; margin-top: 5px;">
         {{comment.body}}
+        <button ng-click="deleteComment(comment._id)" class="btn-sm btn-danger glyphicon glyphicon-trash"></button>
+        <button class="btn-sm btn-primary glyphicon glyphicon-pencil"></button>
       </span>
     </div>
   </div>

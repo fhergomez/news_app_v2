@@ -8,7 +8,7 @@
     <div class="panel-heading panelHeader">
       <h1>POPULAR POSTS</h1>
     </div>
-    <div class="panel-body" ng-repeat="post in posts | orderBy:'-upvotes' | limitTo:5:0">
+    <div class="panel-body panelPosts" ng-repeat="post in posts | orderBy:'-upvotes' | limitTo:5:0">
       <span class="glyphicon glyphicon-thumbs-up"
         ng-click="incrementUpvotes(post)">
       </span>
@@ -25,6 +25,7 @@
           <a href="/posts/{{post._id}}">Comments</a>
         </p>
     </div>
+    <div class="indexForm">
       <div ng-hide="isLoggedIn()">
         <a href="/login" class="btn btn-primary">LOGIN TO POST</a>
       </div>
@@ -49,6 +50,7 @@
           <button type="submit" class="btn btn-primary">Submit Post</button>
         </form>
       </div>
+    </div>
   </div>
 </div>
 
@@ -56,10 +58,10 @@
 
   <div class="panel panel-primary panelBody">
     <div class="panel-heading panelHeader">
-      <h1>NEWS</h1>
+      <h1>SPORTS NEWS</h1>
     </div>
     <div class="panel-body">
-      <ul ng-repeat="result in results | limitTo:15:0">
+      <ul ng-repeat="result in results | limitTo:17:0">
         <li><a href="{{result.url}}" target="_blank">{{result.title}}</a></li>
       </ul>
     </div>

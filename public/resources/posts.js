@@ -50,6 +50,16 @@ NewsApp.factory('posts', ['$http', 'auth', function($http, auth){
     });
   };
 
+  o.deletePost = function(post) {
+    return $http.delete('api/posts/' + post._id, null, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToke()
+      }
+    }).success(function(data){
+      post = data.post;
+    });
+  };
+
   o.upvoteComment = function(post, comment) {
     return $http.put('/api/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
       headers: {
@@ -71,6 +81,14 @@ NewsApp.factory('posts', ['$http', 'auth', function($http, auth){
       }
     });
   };
+
+  o.deleteComment = function(id,comment) {
+    return $http.delete('/api/post/' + id + '/comments/' , comment, {
+      headers: {
+        Authorization: 'Bearer ' + auth.getToken()
+      }
+    });
+  }
 
 
   return o;

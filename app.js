@@ -16,6 +16,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 var news = require('./routes/news');
+var weather = require('./routes/weather');
 
 
 var app = express();
@@ -39,6 +40,7 @@ app.use('/api', routes);
 app.use('/api/posts', posts);
 app.use('/api/users', users);
 app.use('/api/news', news);
+app.use('/api/weather', weather);
 
 ///GET / ... any other url
 //homepage route - catches ALL requests and lets angular do the routing

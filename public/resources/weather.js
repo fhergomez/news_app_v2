@@ -5,7 +5,7 @@ NewsApp.directive('weather', function() {
    location: '=?'
   },
   controller: ['$scope', '$http', function($scope,$http){
-   $scope.location = 'Seattle, WA';
+   $scope.location = 'Seattle,WA';
     console.log($scope.location);
      $http({
        url:'/api/weather',

@@ -18,7 +18,7 @@ NewsApp.directive('weather', function() {
         var weatherData = data.weather[0];
         $scope.temperature = Math.round(data.main.temp);
         $scope.city = data.name;
-        $scope.image = 'http://openweathermap.org/img/w/' + weatherData.icon + '.png';
+        $scope.image = 'https://openweathermap.org/img/w/' + weatherData.icon + '.png';
      })
    }],
     template:'<li class="weather"> \

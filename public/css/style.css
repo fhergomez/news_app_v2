@@ -1,6 +1,7 @@
-body {
+html, body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 a {
@@ -17,6 +18,10 @@ a.btn, a.btn:hover, a.btn:link, a.btn:visited{
 
 .indexForm {
   padding: 15px;
+}
+
+.main-wrap {
+  min-height: 100%;
 }
 
 /*.headerImg {
@@ -60,7 +65,7 @@ a.btn, a.btn:hover, a.btn:link, a.btn:visited{
 
 .mainPost, .mainNews {
   padding: 0 19px 0 19px;
-  min-height: 700px;
+  heigth: 100%;
 }
 
 .weather {

@@ -3,7 +3,9 @@ NewsApp.controller('NewsCtrl', ['$scope','$http','$routeParams', function ($scop
   $scope.data = {};
    $http.get('/api/news').success(function(data){
     console.log(data);
-    $scope.results = data.results;
+    if ($scope.results.title === "Super Bowl") {
+      $scope.results = data.results;
+    };
    });
 
 }]);
